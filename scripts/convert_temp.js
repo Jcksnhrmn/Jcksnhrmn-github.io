@@ -2,37 +2,127 @@ window.addEventListener("DOMContentLoaded", domLoaded);
 
 // When the DOM has finished loading, add the event listeners.
 function domLoaded() {
-   // TODO: Use addEventListener() to register a click event handler for the convert button.
-   // https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener#add_a_simple_listener
+   const fInput = document.getElementById("F_in");
+   const cInput = document.getElementById("C_in");
+   const convertBtn = document.getElementById("convertButton");
+   const msg = document.getElementById("message");
 
-   // Add event listeners to handle clearing the box that WAS NOT clicked,
-   // e.g., the element C_in listens for 'input', with a callback fn to
-   // execute after that event does happen. 
-   // You don't send arguments to the event handler function.
-   // So, if you want the event handler to call another function that
-   // DOES take arguments, you can send that other function as a callback.
-   // https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener#event_listener_with_anonymous_function
-   // Here is an example of anonymous event handler fn that calls alert with an argument:
-   // document.getElementById("weatherIcon").addEventListener("click", function() {alert("You clicked the icon.")})
+   // Convert button click -> perform conversion in the direction of the filled box
+   convertBtn.addEventListener("click", function () {
+      const fValRaw = fInput.value.trim();
+      const cValRaw = cInput.value.trim();
 
-}
-// TODO: (Part of the above is to write the functions to be executed when the event handlers are invoked.)
+      // Neither provided -> prompt & reset icon
+      if (fValRaw === "" && cValRaw === "") {
+         setMessage("Enter a temperature to convert,");
+         setWeatherIcon(null, true);
+         return;
+      }
 
-function convertCtoF(C) {
-   // TODO: Return temp in °F. 
-   // °F = °C * 9/5 + 32
+      // Prefer the one that has a value; if both, prefer the one currently focused
+      let useF = false;
+      if (fValRaw !== "" && cValRaw === "") {
+         useF = true;
+      } else if (fValRaw === "" && cValRaw !== "") {
+         useF = false;
+      } else {
+         // both have something; choose based on focus if possible
+         const active = document.activeElement && document.activeElement.id;
+         if (active === "F_in") useF = true;
+         else if (active === "C_in") useF = false;
+         else useF = false; // default to C → F
+      }
+
+      clearMessage();
+
+      if (useF) {
+         const fNum = parseFloat(fValRaw);
+         if (Number.isNaN(fNum)) {
+            setMessage("Please enter a valid number for °F.");
+            setWeatherIcon(null, true);
+            return;
+         }
+         const c = convertFtoC(fNum);
+         cInput.value = formatNumber(c);
+         setWeatherIcon(fNum, false);
+      } else {
+         const cNum = parseFloat(cValRaw);
+         if (Number.isNaN(cNum)) {
+            setMessage("Please enter a valid number for °C.");
+            setWeatherIcon(null, true);
+            return;
+         }
+         const f = convertCtoF(cNum);
+         fInput.value = formatNumber(f);
+         setWeatherIcon(f, false);
+      }
+   });
+
+   // Input handlers: when typing in one box, clear the other immediately
+   cInput.addEventListener("input", function () {
+      if (cInput.value !== "") {
+         fInput.value = "";
+      }
+      clearMessage();
+   });
+
+   fInput.addEventListener("input", function () {
+      if (fInput.value !== "") {
+         cInput.value = "";
+      }
+      clearMessage();
+   });
+
+   function setMessage(text) {
+      msg.textContent = text || "";
+   }
+
+   function clearMessage() { setMessage(""); }
 }
 
 function convertFtoC(F) {
-   // TODO: Return temp in °C. 
    // °C = (°F - 32) * 5/9
+   return (F - 32) * 5 / 9;
 }
 
-// TODO: write a fn that can be called with every temp conversion
-// to display the correct weather icon.
-// Based on degrees Fahrenheit:
-// 32 or less, but above -200: cold
-// 90 or more, but below 200: hot
-// between hot and cold: cool
-// 200 or more, -200 or less: dead
-// both input fields are blank: C-F
+function convertCtoF(C) {
+   // °F = (°C * 9/5) + 32
+   return (C * 9 / 5) + 32;
+}
+
+// Helper: choose and update the weather icon based on Fahrenheit degrees
+function setWeatherIcon(fahrenheitValue, bothBlank) {
+   const icon = document.getElementById("weatherIcon");
+
+   let src = "images/C-F.png"; // default
+   if (bothBlank === true) {
+      src = "images/C-F.png";
+   } else if (typeof fahrenheitValue === "number" && !Number.isNaN(fahrenheitValue)) {
+      if (fahrenheitValue >= 200 || fahrenheitValue <= -200) {
+         src = "images/dead.png";
+      } else if (fahrenheitValue <= 32 && fahrenheitValue > -200) {
+         src = "images/cold.png";
+      } else if (fahrenheitValue >= 90 && fahrenheitValue < 200) {
+         src = "images/hot.png";
+      } else {
+         src = "images/cool.png";
+      }
+   }
+   icon.setAttribute("src", src);
+   // Update alt text for accessibility
+   const altMap = {
+      "images/C-F.png": "C and F",
+      "images/dead.png": "thermometer dead zone",
+      "images/cold.png": "cold thermometer",
+      "images/hot.png": "hot thermometer",
+      "images/cool.png": "cool thermometer"
+   };
+   icon.setAttribute("alt", altMap[src] || "thermometer");
+}
+
+// Format numbers nicely (trim trailing zeros)
+function formatNumber(n) {
+   // Keep up to 2 decimals, but strip trailing zeros
+   const s = Number(n).toFixed(2);
+   return s.replace(/\.?0+$/, "");
+}
