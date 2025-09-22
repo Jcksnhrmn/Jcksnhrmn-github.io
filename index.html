@@ -1,83 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jackson Harmon's Webpage</title>
-    <style>
-        table, th, td {
-            border: 1px solid black;
-            border-collapse: collapse;
-            padding: 8px;
-            text-align: center;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-    </style>
-</head>
-<body>
-    <h1>Jackson Harmon</h1> 
+   <head>
+      <title>Temperature Converter</title>
+      <script src="scripts/convert_temp.js"></script>
+      <link rel="stylesheet" href="styles/main.css">
+   </head>
+   <body>
+      <h1>Temperature<br>Converter</h1>
+      <hr>
 
-    <h2>NetID: f72q237</h2>
+      <p>
+         <input id="F_in" type="number" min="-459.67">
+         <label for="F_in">°F:</label>
+      </p>
 
-    <p>
-        <a href="https://jcksnhrmn.github.io/Jcksnhrmn-github.io/" target="_blank">
-            My GitHub Pages Site
-        </a>
-    </p>
+      <p>
+         <input id="C_in" type="number" min="-273.15">
+         <label for="C_in">°C:</label>
+      </p>
 
-    <h2>Class Schedule</h2>
-    <table>
-        <tr>
-            <th>Time</th>
-            <th>Monday</th>
-            <th>Tuesday</th>
-            <th>Wednesday</th>
-            <th>Thursday</th>
-            <th>Friday</th>
-        </tr>
-        <tr>
-            <td>12:00</td>
-            <td>CSCI 466</td>
-            <td></td>
-            <td>CSCI 466</td>
-            <td></td>
-            <td>CSCI 466</td>
-        </tr>
-        <tr>
-            <td>1:00</td>
-            <td>CSCI 331</td>
-            <td></td>
-            <td>CSCI 331</td>
-            <td></td>
-            <td>CSCI 331</td>
-        </tr>
-        <tr>
-            <td>2:00</td>
-            <td>CSCI 440</td>
-            <td></td>
-            <td>CSCI 440</td>
-            <td></td>
-            <td>CSCI 440</td>
-        </tr>
-        <tr>
-            <td>3:00</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-    </table>
+      <input id="convertButton" type="button" value="Convert Units">
 
-    <h2>Previous Courses</h2>
-    <ul>
-        <li>CSCI 127: Joy and Beauty of Data</li>
-        <li>CSCI 132: Basic Data Structures</li>
-        <li>CSCI 215: Web Development</li>
-        <li>CSCI 232: Data Structures and Algorithms</li>
-        <li>MATH 181: Calculus I</li>
-    </ul>
-</body>
+      <p id="message">
+         <!-- Contextual messages show up here, like:
+              "Enter a temperature to convert," -->
+      </p>
+
+      <p>
+         <img id="weatherIcon" src="images/C-F.png" alt="C and F">
+      </p>
+   </body>
 </html>
+
