@@ -1,83 +1,79 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jackson Harmon's Webpage</title>
-    <style>
-        table, th, td {
-            border: 1px solid black;
-            border-collapse: collapse;
-            padding: 8px;
-            text-align: center;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-    </style>
-</head>
-<body>
-    <h1>Jackson Harmon</h1> 
+<legend>Basics</legend>
+<div class="row">
+<label for="fullName">Full name</label>
+<input type="text" id="fullName" name="fullName" placeholder="Jane Doe" />
+</div>
+<div class="row">
+<label for="email">Email</label>
+<input type="email" id="email" name="email" placeholder="you@example.com" />
+</div>
+<div class="row">
+<label for="dob">Date of birth</label>
+<input type="date" id="dob" name="dob" />
+</div>
+</fieldset>
 
-    <h2>NetID: f72q237</h2>
 
-    <p>
-        <a href="https://jcksnhrmn.github.io/Jcksnhrmn-github.io/" target="_blank">
-            My GitHub Pages Site
-        </a>
-    </p>
+<fieldset>
+<legend>Preferences</legend>
+<div class="row">
+<label>Contact method (radio)</label>
+<div class="choices" role="group" aria-labelledby="contact-group">
+<label><input type="radio" name="contactMethod" value="Email" /> Email</label>
+<label><input type="radio" name="contactMethod" value="Phone" /> Phone</label>
+<label><input type="radio" name="contactMethod" value="Text" /> Text</label>
+</div>
+</div>
+<div class="row">
+<label for="favoriteColor">Favorite color (select one)</label>
+<select id="favoriteColor" name="favoriteColor">
+<option value="">-- choose --</option>
+<option>Blue</option>
+<option>Green</option>
+<option>Purple</option>
+</select>
+</div>
+<div class="row">
+<label>Hobbies (checkboxes)</label>
+<div class="choices">
+<label><input type="checkbox" name="hobbies[]" value="Hiking" /> Hiking</label>
+<label><input type="checkbox" name="hobbies[]" value="Cooking" /> Cooking</label>
+<label><input type="checkbox" name="hobbies[]" value="Gaming" /> Gaming</label>
+<label><input type="checkbox" name="hobbies[]" value="Reading" /> Reading</label>
+</div>
+</div>
+<div class="row">
+<label for="skills">Skills (select multiple)</label>
+<select id="skills" name="skills[]" multiple size="5">
+<option value="HTML">HTML</option>
+<option value="CSS">CSS</option>
+<option value="JavaScript">JavaScript</option>
+<option value="PHP">PHP</option>
+<option value="SQL">SQL</option>
+</select>
+</div>
+</fieldset>
 
-    <h2>Class Schedule</h2>
-    <table>
-        <tr>
-            <th>Time</th>
-            <th>Monday</th>
-            <th>Tuesday</th>
-            <th>Wednesday</th>
-            <th>Thursday</th>
-            <th>Friday</th>
-        </tr>
-        <tr>
-            <td>12:00</td>
-            <td>CSCI 466</td>
-            <td></td>
-            <td>CSCI 466</td>
-            <td></td>
-            <td>CSCI 466</td>
-        </tr>
-        <tr>
-            <td>1:00</td>
-            <td>CSCI 331</td>
-            <td></td>
-            <td>CSCI 331</td>
-            <td></td>
-            <td>CSCI 331</td>
-        </tr>
-        <tr>
-            <td>2:00</td>
-            <td>CSCI 440</td>
-            <td></td>
-            <td>CSCI 440</td>
-            <td></td>
-            <td>CSCI 440</td>
-        </tr>
-        <tr>
-            <td>3:00</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-    </table>
 
-    <h2>Previous Courses</h2>
-    <ul>
-        <li>CSCI 127: Joy and Beauty of Data</li>
-        <li>CSCI 132: Basic Data Structures</li>
-        <li>CSCI 215: Web Development</li>
-        <li>CSCI 232: Data Structures and Algorithms</li>
-        <li>MATH 181: Calculus I</li>
-    </ul>
+<fieldset>
+<legend>Anything else?</legend>
+<div class="row">
+<label for="bio">Short bio</label>
+<textarea id="bio" name="bio" rows="4" placeholder="Tell us something fun..."></textarea>
+</div>
+</fieldset>
+
+
+<div class="actions">
+<input type="submit" value="Submit" />
+<button type="reset">Reset</button>
+</div>
+
+
+<p class="note">Want to test POST? Change the form's <code>method</code> to <code>post</code>.
+</p>
+</form>
+</main>
 </body>
 </html>
