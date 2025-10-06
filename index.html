@@ -1,83 +1,196 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jackson Harmon's Webpage</title>
-    <style>
-        table, th, td {
-            border: 1px solid black;
-            border-collapse: collapse;
-            padding: 8px;
-            text-align: center;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Data Collection Form</title>
+  <style>
+    :root { --ink:#1f2937; --brand:#2563eb; --bg:#f8fafc; }
+    body { font-family: system-ui, Arial, sans-serif; background: var(--bg); color: var(--ink); margin: 0; }
+    header { padding: 2rem 1rem; text-align: center; background: white; border-bottom: 1px solid #e5e7eb; }
+    h1 { margin: 0 0 .25rem; font-size: 1.75rem; }
+    main { max-width: 840px; margin: 2rem auto; background: white; padding: 1.25rem; border-radius: 14px; box-shadow: 0 8px 24px rgba(0,0,0,.06); }
+    fieldset { border:1px solid #e5e7eb; border-radius: 12px; padding: 1rem 1.25rem; margin: 1rem 0 1.25rem; }
+    legend { padding: 0 .5rem; font-weight: 700; }
+    .row { display: grid; grid-template-columns: 1fr 2fr; gap: .75rem 1rem; align-items: center; margin:.5rem 0; }
+    label { font-weight: 600; }
+    input[type="text"], input[type="email"], input[type="date"], select, textarea { width: 100%; padding:.6rem .7rem; border:1px solid #d1d5db; border-radius: 10px; font: inherit; }
+    .choices { display: flex; flex-wrap: wrap; gap: .75rem 1.25rem; }
+    .actions { display: flex; gap: .75rem; padding-top: .5rem; }
+    button, input[type="submit"] { padding:.75rem 1rem; border-radius: 12px; border: none; background: var(--brand); color:white; font-weight:700; cursor:pointer; }
+    .note { font-size: .9rem; color:#6b7280; }
+  </style>
 </head>
 <body>
-    <h1>Jackson Harmon</h1> 
+  <header>
+    <h1>Tell Us About You</h1>
+    <p class="note">Fill this out and we'll show you a table of everything you submitted.</p>
+  </header>
 
-    <h2>NetID: f72q237</h2>
+  <main>
+    <!-- You can switch method to POST to test that as well; PHP will handle either. -->
+    <!-- NOTE: Replace the action URL with your actual Render service URL once deployed -->
+    <form action="https://YOUR-RENDER-SERVICE.onrender.com/form-viewer.php" method="post">
+      <fieldset>
+        <legend>Basics</legend>
+        <div class="row">
+          <label for="fullName">Full name</label>
+          <input type="text" id="fullName" name="fullName" placeholder="Jane Doe" />
+        </div>
+        <div class="row">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="you@example.com" />
+        </div>
+        <div class="row">
+          <label for="dob">Date of birth</label>
+          <input type="date" id="dob" name="dob" />
+        </div>
+      </fieldset>
 
-    <p>
-        <a href="https://jcksnhrmn.github.io/Jcksnhrmn-github.io/" target="_blank">
-            My GitHub Pages Site
-        </a>
-    </p>
+      <fieldset>
+        <legend>Preferences</legend>
+        <div class="row">
+          <label>Contact method (radio)</label>
+          <div class="choices" role="group" aria-labelledby="contact-group">
+            <label><input type="radio" name="contactMethod" value="Email" /> Email</label>
+            <label><input type="radio" name="contactMethod" value="Phone" /> Phone</label>
+            <label><input type="radio" name="contactMethod" value="Text" /> Text</label>
+          </div>
+        </div>
+        <div class="row">
+          <label for="favoriteColor">Favorite color (select one)</label>
+          <select id="favoriteColor" name="favoriteColor">
+            <option value="">-- choose --</option>
+            <option>Blue</option>
+            <option>Green</option>
+            <option>Purple</option>
+          </select>
+        </div>
+        <div class="row">
+          <label>Hobbies (checkboxes)</label>
+          <div class="choices">
+            <label><input type="checkbox" name="hobbies[]" value="Hiking" /> Hiking</label>
+            <label><input type="checkbox" name="hobbies[]" value="Cooking" /> Cooking</label>
+            <label><input type="checkbox" name="hobbies[]" value="Gaming" /> Gaming</label>
+            <label><input type="checkbox" name="hobbies[]" value="Reading" /> Reading</label>
+          </div>
+        </div>
+        <div class="row">
+          <label for="skills">Skills (select multiple)</label>
+          <select id="skills" name="skills[]" multiple size="5">
+            <option value="HTML">HTML</option>
+            <option value="CSS">CSS</option>
+            <option value="JavaScript">JavaScript</option>
+            <option value="PHP">PHP</option>
+            <option value="SQL">SQL</option>
+          </select>
+        </div>
+      </fieldset>
 
-    <h2>Class Schedule</h2>
-    <table>
-        <tr>
-            <th>Time</th>
-            <th>Monday</th>
-            <th>Tuesday</th>
-            <th>Wednesday</th>
-            <th>Thursday</th>
-            <th>Friday</th>
-        </tr>
-        <tr>
-            <td>12:00</td>
-            <td>CSCI 466</td>
-            <td></td>
-            <td>CSCI 466</td>
-            <td></td>
-            <td>CSCI 466</td>
-        </tr>
-        <tr>
-            <td>1:00</td>
-            <td>CSCI 331</td>
-            <td></td>
-            <td>CSCI 331</td>
-            <td></td>
-            <td>CSCI 331</td>
-        </tr>
-        <tr>
-            <td>2:00</td>
-            <td>CSCI 440</td>
-            <td></td>
-            <td>CSCI 440</td>
-            <td></td>
-            <td>CSCI 440</td>
-        </tr>
-        <tr>
-            <td>3:00</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-    </table>
+      <fieldset>
+        <legend>Anything else?</legend>
+        <div class="row">
+          <label for="bio">Short bio</label>
+          <textarea id="bio" name="bio" rows="4" placeholder="Tell us something fun..."></textarea>
+        </div>
+      </fieldset>
 
-    <h2>Previous Courses</h2>
-    <ul>
-        <li>CSCI 127: Joy and Beauty of Data</li>
-        <li>CSCI 132: Basic Data Structures</li>
-        <li>CSCI 215: Web Development</li>
-        <li>CSCI 232: Data Structures and Algorithms</li>
-        <li>MATH 181: Calculus I</li>
-    </ul>
+      <div class="actions">
+        <input type="submit" value="Submit" />
+        <button type="reset">Reset</button>
+      </div>
+
+      <p class="note">This form currently uses <code>POST<\/code>. You can switch it to <code>GET<\/code> for testing—your PHP handles both.
+      </p>
+    </form>
+  </main>
+</body>
+</html>
+```
+
+---
+
+## 2) `form-viewer.php`
+
+```php
+<?php
+// form-viewer.php
+// Displays submitted form data in a styled table. Works with GET or POST.
+
+// Pick the incoming data depending on request method
+$method = $_SERVER['REQUEST_METHOD'] ?? 'GET';
+$data = ($method === 'POST') ? $_POST : $_GET;
+
+// helper to escape output
+function h($v) { return htmlspecialchars((string)$v, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8'); }
+
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Viewer</title>
+  <style>
+    :root{ --ink:#111827; --muted:#6b7280; --border:#e5e7eb; --bg:#f8fafc; --accent:#0ea5e9; }
+    body{ font-family: system-ui, Arial, sans-serif; background: var(--bg); color: var(--ink); margin:0; }
+    header{ background:white; border-bottom:1px solid var(--border); padding:1.25rem; }
+    h1{ margin:.25rem 0; }
+    main{ max-width: 960px; margin: 1.5rem auto; padding: 0 1rem 2rem; }
+    table{ width:100%; border-collapse: collapse; background:white; border:1px solid var(--border); border-radius: 14px; overflow:hidden; box-shadow: 0 10px 30px rgba(0,0,0,.06); }
+    thead th{ text-align:left; background:#f1f5f9; padding:.85rem 1rem; font-size:.95rem; border-bottom:1px solid var(--border); }
+    tbody td{ padding:.85rem 1rem; border-bottom:1px solid var(--border); vertical-align: top; }
+    tr:last-child td{ border-bottom:none; }
+    .key{ font-weight:700; }
+    .array{ display:inline-block; padding:.25rem .5rem; margin:.2rem; background:#eff6ff; border:1px solid #dbeafe; border-radius: 999px; font-size:.85rem; }
+    .meta{ color:var(--muted); font-size:.9rem; }
+    .empty{ color:#9ca3af; font-style: italic; }
+    .btns{ margin: 1rem 0; display:flex; gap:.5rem; }
+    a.btn{ display:inline-block; padding:.6rem .9rem; background:var(--accent); color:white; font-weight:700; border-radius:12px; text-decoration:none; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Form Viewer</h1>
+    <p class="meta">Request method: <strong><?php echo h($method); ?></strong></p>
+  </header>
+  <main>
+    <div class="btns">
+      <a class="btn" href="index.html">Back to Form</a>
+    </div>
+
+    <?php if (empty($data)) : ?>
+      <p class="empty">No data was submitted. Try going back and filling out the form.</p>
+    <?php else: ?>
+      <table>
+        <thead>
+          <tr>
+            <th>Field (name)</th>
+            <th>Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php foreach ($data as $key => $value): ?>
+            <tr>
+              <td class="key"><?php echo h($key); ?></td>
+              <td>
+                <?php if (is_array($value)): ?>
+                  <?php if (count($value) === 0): ?>
+                    <span class="empty">(empty array)</span>
+                  <?php else: ?>
+                    <?php foreach ($value as $item): ?>
+                      <span class="array"><?php echo h($item); ?></span>
+                    <?php endforeach; ?>
+                  <?php endif; ?>
+                <?php else: ?>
+                  <?php echo ($value === '' ? '<span class="empty">(empty)</span>' : h($value)); ?>
+                <?php endif; ?>
+              </td>
+            </tr>
+          <?php endforeach; ?>
+        </tbody>
+      </table>
+    <?php endif; ?>
+  </main>
 </body>
 </html>
