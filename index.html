@@ -1,109 +1,77 @@
-
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Data Collection Form</title>
-  <style>
-    :root { --ink:#1f2937; --brand:#2563eb; --bg:#f8fafc; }
-    body { font-family: system-ui, Arial, sans-serif; background: var(--bg); color: var(--ink); margin: 0; }
-    header { padding: 2rem 1rem; text-align: center; background: white; border-bottom: 1px solid #e5e7eb; }
-    h1 { margin: 0 0 .25rem; font-size: 1.75rem; }
-    main { max-width: 840px; margin: 2rem auto; background: white; padding: 1.25rem; border-radius: 14px; box-shadow: 0 8px 24px rgba(0,0,0,.06); }
-    fieldset { border:1px solid #e5e7eb; border-radius: 12px; padding: 1rem 1.25rem; margin: 1rem 0 1.25rem; }
-    legend { padding: 0 .5rem; font-weight: 700; }
-    .row { display: grid; grid-template-columns: 1fr 2fr; gap: .75rem 1rem; align-items: center; margin:.5rem 0; }
-    label { font-weight: 600; }
-    input[type="text"], input[type="email"], input[type="date"], select, textarea { width: 100%; padding:.6rem .7rem; border:1px solid #d1d5db; border-radius: 10px; font: inherit; }
-    .choices { display: flex; flex-wrap: wrap; gap: .75rem 1.25rem; }
-    .actions { display: flex; gap: .75rem; padding-top: .5rem; }
-    button, input[type="submit"] { padding:.75rem 1rem; border-radius: 12px; border: none; background: var(--brand); color:white; font-weight:700; cursor:pointer; }
-    .note { font-size: .9rem; color:#6b7280; }
-  </style>
-</head>
-<body>
-  <header>
-    <h1>Tell Us About You</h1>
-    <p class="note">Fill this out and we'll show you a table of everything you submitted.</p>
-  </header>
+<label for="fullName">Full name</label>
+<input type="text" id="fullName" name="fullName" placeholder="Jane Doe" />
+</div>
+<div class="row">
+<label for="email">Email</label>
+<input type="email" id="email" name="email" placeholder="you@example.com" />
+</div>
+<div class="row">
+<label for="dob">Date of birth</label>
+<input type="date" id="dob" name="dob" />
+</div>
+</fieldset>
 
-  <main>
-    <form action="https://YOUR-RENDER-SERVICE.onrender.com/form-viewer.php" method="post">
-      <fieldset>
-        <legend>Basics</legend>
-        <div class="row">
-          <label for="fullName">Full name</label>
-          <input type="text" id="fullName" name="fullName" placeholder="Jane Doe" />
-        </div>
-        <div class="row">
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" placeholder="you@example.com" />
-        </div>
-        <div class="row">
-          <label for="dob">Date of birth</label>
-          <input type="date" id="dob" name="dob" />
-        </div>
-      </fieldset>
 
-      <fieldset>
-        <legend>Preferences</legend>
-        <div class="row">
-          <label>Contact method (radio)</label>
-          <div class="choices" role="group" aria-labelledby="contact-group">
-            <label><input type="radio" name="contactMethod" value="Email" /> Email</label>
-            <label><input type="radio" name="contactMethod" value="Phone" /> Phone</label>
-            <label><input type="radio" name="contactMethod" value="Text" /> Text</label>
-          </div>
-        </div>
-        <div class="row">
-          <label for="favoriteColor">Favorite color (select one)</label>
-          <select id="favoriteColor" name="favoriteColor">
-            <option value="">-- choose --</option>
-            <option>Blue</option>
-            <option>Green</option>
-            <option>Purple</option>
-          </select>
-        </div>
-        <div class="row">
-          <label>Hobbies (checkboxes)</label>
-          <div class="choices">
-            <label><input type="checkbox" name="hobbies[]" value="Hiking" /> Hiking</label>
-            <label><input type="checkbox" name="hobbies[]" value="Cooking" /> Cooking</label>
-            <label><input type="checkbox" name="hobbies[]" value="Gaming" /> Gaming</label>
-            <label><input type="checkbox" name="hobbies[]" value="Reading" /> Reading</label>
-          </div>
-        </div>
-        <div class="row">
-          <label for="skills">Skills (select multiple)</label>
-          <select id="skills" name="skills[]" multiple size="5">
-            <option value="HTML">HTML</option>
-            <option value="CSS">CSS</option>
-            <option value="JavaScript">JavaScript</option>
-            <option value="PHP">PHP</option>
-            <option value="SQL">SQL</option>
-          </select>
-        </div>
-      </fieldset>
+<fieldset>
+<legend>Preferences</legend>
+<div class="row">
+<label>Contact method (radio)</label>
+<div class="choices" role="group" aria-labelledby="contact-group">
+<label><input type="radio" name="contactMethod" value="Email" /> Email</label>
+<label><input type="radio" name="contactMethod" value="Phone" /> Phone</label>
+<label><input type="radio" name="contactMethod" value="Text" /> Text</label>
+</div>
+</div>
+<div class="row">
+<label for="favoriteColor">Favorite color (select one)</label>
+<select id="favoriteColor" name="favoriteColor">
+<option value="">-- choose --</option>
+<option>Blue</option>
+<option>Green</option>
+<option>Purple</option>
+</select>
+</div>
+<div class="row">
+<label>Hobbies (checkboxes)</label>
+<div class="choices">
+<label><input type="checkbox" name="hobbies[]" value="Hiking" /> Hiking</label>
+<label><input type="checkbox" name="hobbies[]" value="Cooking" /> Cooking</label>
+<label><input type="checkbox" name="hobbies[]" value="Gaming" /> Gaming</label>
+<label><input type="checkbox" name="hobbies[]" value="Reading" /> Reading</label>
+</div>
+</div>
+<div class="row">
+<label for="skills">Skills (select multiple)</label>
+<select id="skills" name="skills[]" multiple size="5">
+<option value="HTML">HTML</option>
+<option value="CSS">CSS</option>
+<option value="JavaScript">JavaScript</option>
+<option value="PHP">PHP</option>
+<option value="SQL">SQL</option>
+</select>
+</div>
+</fieldset>
 
-      <fieldset>
-        <legend>Anything else?</legend>
-        <div class="row">
-          <label for="bio">Short bio</label>
-          <textarea id="bio" name="bio" rows="4" placeholder="Tell us something fun..."></textarea>
-        </div>
-      </fieldset>
 
-      <div class="actions">
-        <input type="submit" value="Submit" />
-        <button type="reset">Reset</button>
-      </div>
+<fieldset>
+<legend>Anything else?</legend>
+<div class="row">
+<label for="bio">Short bio</label>
+<textarea id="bio" name="bio" rows="4" placeholder="Tell us something fun..."></textarea>
+</div>
+</fieldset>
 
-      <p class="note">This form currently uses <code>POST<\/code>. You can switch it to <code>GET<\/code> for testing—your PHP handles both.
-      </p>
-    </form>
-  </main>
+
+<div class="actions">
+<input type="submit" value="Submit" />
+<button type="reset">Reset</button>
+</div>
+
+
+<p class="note">This form currently uses <code>POST<\/code>. You can switch it to <code>GET<\/code> for testing—your PHP handles both.
+</p>
+</form>
+</main>
 </body>
 </html>
-
-
