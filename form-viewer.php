@@ -1,8 +1,7 @@
-// Pick the incoming data depending on request method
+<?php
 
 
 // helper to escape output
-
 function h($v) { return htmlspecialchars((string)$v, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8'); }
 
 
