@@ -1,1 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>My Assignment – Gallery</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <nav class="site-nav" aria-label="Primary">
+      <a class="brand" href="index.html">My Assignment</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="gallary.html" aria-current="page">Gallery</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main" class="container">
+    <header class="page-header">
+      <h1>Gallery</h1>
+      <p>This page uses <strong>CSS Grid</strong>. Update images and alt text as needed.</p>
+    </header>
+
+    <!-- GRID SECTION -->
+    <section class="gallery-grid" aria-label="Image gallery">
+      <!-- Replace with your own images & accurate alt content -->
+      <figure class="gallery-item">
+        <img src="images/sample-1.jpg" alt="Sunlight reflecting on glass facade" />
+        <figcaption>Sample 1</figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <img src="images/sample-2.jpg" alt="Close-up of textured concrete wall" />
+        <figcaption>Sample 2</figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <img src="images/sample-3.jpg" alt="Minimalist interior with wooden chair" />
+        <figcaption>Sample 3</figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <img src="images/sample-4.jpg" alt="Blue sky framed by geometric building" />
+        <figcaption>Sample 4</figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <img src="images/sample-5.jpg" alt="Shadow pattern across tiled floor" />
+        <figcaption>Sample 5</figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <img src="images/sample-6.jpg" alt="Green plant by bright window" />
+        <figcaption>Sample 6</figcaption>
+      </figure>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; <span id="year"></span> My Assignment</p>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
 
